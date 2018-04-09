@@ -1,3 +1,4 @@
+
 class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments
@@ -5,4 +6,6 @@ class Post < ActiveRecord::Base
   has_many :tags, :through => :post_tags
 
   validates_presence_of :name, :content
+
+  accepts_nested_attributes_for :tags, reject_if: proc { |attributes| attributes['name'].blank? }
 end
