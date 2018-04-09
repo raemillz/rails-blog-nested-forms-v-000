@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :name
   validates_presence_of :name
+
+# is line 9 necessary?
+  # accepts_nested_attributes_for :posts, reject_if: proc { |attributes| attributes['title'].blank?}
+
 end
